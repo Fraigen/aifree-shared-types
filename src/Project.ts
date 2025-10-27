@@ -54,6 +54,16 @@ export interface IProject {
   attachments?: IAttachment[];
   conversationId?: string;
   taskId?: string;
+  // Organization fields
+  organizationId?: string;
+  assignedToUserId?: string; // Team member assigned to this project
   // Optional populated client information
   client?: IProjectClient;
+  // Optional populated assigned user information
+  assignedTo?: {
+    _id: string;
+    name: string;
+    email: string;
+    photo?: string;
+  };
 }

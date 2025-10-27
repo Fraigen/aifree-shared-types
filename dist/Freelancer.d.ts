@@ -39,4 +39,8 @@ export interface Freelancer {
         current: boolean;
     }[];
     userId: string;
+    reviewSummary?: {
+        averageRating: number;
+        totalReviews: number;
+    };
 }

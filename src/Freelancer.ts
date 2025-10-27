@@ -40,4 +40,10 @@ export interface Freelancer {
     current: boolean;
   }[];
   userId: string;
+  
+  // Review data
+  reviewSummary?: {
+    averageRating: number;
+    totalReviews: number;
+  };
 }

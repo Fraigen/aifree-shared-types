@@ -158,7 +158,7 @@ export interface ComparativeAnalytics {
 // Activity Timeline
 export interface ActivityTimelineItem {
   _id: string;
-  type: 'project_created' | 'project_completed' | 'payment_made' | 'freelancer_hired' | 'milestone_achieved';
+  type: 'project_created' | 'project_completed' | 'payment_made' | 'freelancer_hired' | 'milestone_achieved' | 'activity_03';
   title: string;
   translationKey?: string;
   description: string;
@@ -166,6 +166,7 @@ export interface ActivityTimelineItem {
   timestamp: Date;
   relatedEntityId?: string;
   relatedEntityType?: 'project' | 'freelancer' | 'transaction';
+  icon?: string;
 }
 
 // Dashboard Filters

@@ -76,7 +76,7 @@ export interface InvitationResponse extends ApiResponse<IInvitation> {}
 export interface OrganizationWithMembersResponse extends ApiResponse<{
   organization: IOrganization;
   members: (ITeamMember & {
-    user: {
+    userId: {
       _id: string;
       email: string;
       name?: string;
@@ -90,13 +90,17 @@ export interface TeamDashboardData {
   totalMembers: number;
   totalProjects: number;
   activeProjects: number;
+  completedProjects: number;
+  totalBudget: number;
+  averageProjectDuration: number;
   recentActivity: {
-    type: "project_created" | "project_assigned" | "member_joined" | "project_completed";
+    type: "project_created" | "project_assigned" | "member_joined" | "project_completed" | "project_updated" | "conversation_started";
     userId: string;
     userName?: string;
     projectId?: string;
     projectTitle?: string;
     timestamp: Date;
+    metadata?: any;
   }[];
   memberStats: {
     userId: string;
@@ -104,8 +108,45 @@ export interface TeamDashboardData {
     projectsCount: number;
     activeProjectsCount: number;
     completedProjectsCount: number;
+    totalBudgetManaged: number;
+    averageCompletionTime: number;
     lastActivity: Date;
+    assignedProjects: {
+      _id: string;
+      title: string;
+      status: string;
+      budget: number;
+      startDate: Date;
+      endDate?: Date;
+    }[];
   }[];
+  projectDistribution: {
+    status: string;
+    count: number;
+    totalBudget: number;
+  }[];
+  monthlyTrends: {
+    month: string;
+    projectsCreated: number;
+    projectsCompleted: number;
+    totalBudget: number;
+  }[];
+  teamWorkload: {
+    userId: string;
+    userName?: string;
+    currentWorkload: number; // Number of active projects
+    upcomingDeadlines: {
+      projectId: string;
+      projectTitle: string;
+      daysUntilDeadline: number;
+    }[];
+  }[];
+  collaborationMetrics: {
+    totalConversations: number;
+    activeConversations: number;
+    averageResponseTime: number;
+    sharedFavorites: number;
+  };
 }
 
 export interface TeamDashboardResponse extends ApiResponse<TeamDashboardData> {}
